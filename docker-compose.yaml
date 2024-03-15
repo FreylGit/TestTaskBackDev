@@ -1,0 +1,24 @@
+version: "3"
+
+services:
+  auth_db:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: "your_username_here"
+      MONGO_INITDB_ROOT_PASSWORD: "your_password_here"
+    ports:
+      - "27017:27017"  # Вам нужно указать порт, на котором MongoDB будет слушать запросы
+    volumes:
+      - auth_volume:/data/db  # Предполагается, что вы хотите сохранять данные MongoDB между перезапусками контейнера
+  auth_server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8002:8002"
+    depends_on:
+      - auth_db
+
+volumes:
+  auth_volume:

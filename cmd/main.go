@@ -1,7 +1,19 @@
 package main
 
-import "fmt"
+import (
+	"context"
+	"github.com/FreylGit/TestTaskBackDev/internal/app"
+	"log"
+)
 
 func main() {
-	fmt.Println("Hello world")
+	ctx := context.Background()
+	a, err := app.NewApp(ctx)
+	if err != nil {
+		log.Fatal("Failed config app")
+	}
+	err = a.Start(ctx)
+	if err != nil {
+		log.Fatal("Failed start server")
+	}
 }

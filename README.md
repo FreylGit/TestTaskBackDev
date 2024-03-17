@@ -8,7 +8,7 @@ Test task BackDev
 - MongoDB
 - Docker
 
-## Установка и запуск проекта:
+## Запуск проекта:
 
 1. Убедитесь, что у вас установлен Docker и Docker Compose.
 2. Запустить проект
